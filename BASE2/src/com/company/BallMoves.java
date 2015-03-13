@@ -1,0 +1,29 @@
+/** Demo Code Explaining how you can extend the class to create your players movement function So far I have only added x and y so work on that*/
+
+package com.company;
+import java.awt.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class BallMoves extends GameScreen {
+
+
+    public void moveBallRight() {
+
+        if (x > 510){
+            x = x;
+        }
+        else {
+            x = x + 10;
+        }
+    }
+    public void moveBallLeft() {
+
+        if (x < 20){
+            x = x;
+        }
+        else {
+            x = x - 10;
+        }
+    }
+}
