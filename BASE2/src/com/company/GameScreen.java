@@ -7,6 +7,7 @@ public class GameScreen extends Screen{
 
     public int y = 750;
     public int x = 270;
+    public int z = 0;
 
     public void Bound() throws InterruptedException {
         GameScreen game = new GameScreen();
@@ -41,6 +42,7 @@ public class GameScreen extends Screen{
         g2.drawString(Integer.toString(y),420,40);
         g2.fillRect(x, y, 60, 10);
         g2.fillRect(x + 20,y - 10,20,20);
+        g2.fillOval(z,30,30,30);
 
     }
 

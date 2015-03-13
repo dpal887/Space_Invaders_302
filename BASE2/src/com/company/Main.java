@@ -15,10 +15,10 @@ public class Main {
 
         int speed = 100;
         final UpgradeScreen uScreen = new UpgradeScreen();
-        final BallMoves gScreen = new BallMoves();
+        final AImoves gScreen = new AImoves();
 
         // Initialise the JFrame to hold game Interface
-        JFrame boundary = new JFrame("Space Invaders r0.0.8");
+        JFrame boundary = new JFrame("Space Invaders r0.1.00");
 
         //Create new gamescreen TODO: DEMO ONLY
         boundary.setSize(600, 800);
@@ -54,7 +54,7 @@ public class Main {
             boundary.add(uScreen);
             uScreen.Bound();
             boundary.setVisible(true);
-            for(int j = 0; j<2000; j++) {
+            for(int j = 0; j<5000; j++) {
                 uScreen.repaint();
                 Thread.sleep(100 / speed);
                 System.out.print(Integer.toString(j));
@@ -65,6 +65,7 @@ public class Main {
             boundary.add(gScreen);
             boundary.setVisible(true);
             for(int j = 0; j<20000; j++) {
+                gScreen.moveAI();
                 gScreen.repaint();
                 Thread.sleep(100 / speed);
                 System.out.print(Integer.toString(j));
