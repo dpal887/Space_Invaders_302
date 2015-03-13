@@ -7,23 +7,22 @@ import javax.swing.JPanel;
 
 public class BallMoves extends GameScreen {
 
-
-    public void moveBallRight() {
+    public void moveBallRight(int n) {
 
         if (x > 510){
             x = x;
         }
         else {
-            x = x + 10;
+            x = x + (10+n);
         }
     }
-    public void moveBallLeft() {
+    public void moveBallLeft(int n) {
 
         if (x < 20){
             x = x;
         }
         else {
-            x = x - 10;
+            x = x - (10+n);
         }
     }
 }

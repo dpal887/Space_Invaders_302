@@ -3,6 +3,7 @@ package com.company;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
 public class UpgradeScreen extends Screen {
 
@@ -28,8 +29,18 @@ public class UpgradeScreen extends Screen {
         FireRateUp.setForeground(Color.BLACK);
         HPUp.setBackground(Color.WHITE);
         HPUp.setForeground(Color.BLACK);
+        Speedup.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.print("Correct Action Performed");
+                Main.playerSpeed = Main.playerSpeed + 1;
+                System.out.print(Integer.toString(Main.playerSpeed));
+            }
+        });
+
         super.setLayout(new FlowLayout());
     }
+
 
     @Override
     public void paint(Graphics g){

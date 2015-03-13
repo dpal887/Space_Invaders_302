@@ -9,28 +9,20 @@ import javax.swing.*;
 
 public class Main {
 
-    public void actionPerformed(ActionEvent e) {
 
-    }
-
+    static int playerSpeed = 1;
     public static void main(String[] args) throws InterruptedException {
-        final int speed = 100;
+
+        int speed = 100;
+        final UpgradeScreen uScreen = new UpgradeScreen();
+        final BallMoves gScreen = new BallMoves();
 
         // Initialise the JFrame to hold game Interface
         JFrame boundary = new JFrame("Space Invaders r0.0.8");
 
         //Create new gamescreen TODO: DEMO ONLY
-        //When You are using this part of the code modify the BallMoves file or change name of BallMoves below to your new class's name
-        final BallMoves gScreen = new BallMoves();
-        //Add add type (JPanel) BallMoves() to the screen
-        boundary.add(gScreen);
-        //
         boundary.setSize(600, 800);
-        boundary.setVisible(true);
-        boundary.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        gScreen.Bound();
-
-
+        boundary.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         boundary.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -39,12 +31,13 @@ public class Main {
 
             @Override
             public void keyPressed(KeyEvent e) {
+
                 char ch = e.getKeyChar();
                 if (ch == 'd') {
-                    gScreen.moveBallRight();
+                    gScreen.moveBallRight(Main.playerSpeed);
                 }
-                if(ch == 'a') {
-                    gScreen.moveBallLeft();
+                if (ch == 'a') {
+                    gScreen.moveBallLeft(Main.playerSpeed);
                 }
             }
 
@@ -53,27 +46,33 @@ public class Main {
 
             }
         });
-//        while (true) {
-//
-//            gScreen.repaint();
-//            Thread.sleep(100/speed);
-//
-//        }
-        boundary.remove(gScreen);
-        UpgradeScreen uScreen = new UpgradeScreen();
         boundary.add(uScreen);
         uScreen.Bound();
         boundary.setVisible(true);
 
-        while (true) {
-
-            uScreen.repaint();
-            Thread.sleep(100/speed);
-
+        while (true){
+            boundary.add(uScreen);
+            uScreen.Bound();
+            boundary.setVisible(true);
+            for(int j = 0; j<2000; j++) {
+                uScreen.repaint();
+                Thread.sleep(100 / speed);
+                System.out.print(Integer.toString(j));
+                System.out.println(": Initial");
+            }
+            boundary.setVisible(false);
+            boundary.remove(uScreen);
+            boundary.add(gScreen);
+            boundary.setVisible(true);
+            for(int j = 0; j<20000; j++) {
+                gScreen.repaint();
+                Thread.sleep(100 / speed);
+                System.out.print(Integer.toString(j));
+                System.out.println(": Game");
+            }
+            boundary.setVisible(false);
+            boundary.remove(gScreen);
         }
-
-        //boundary.remove(uScreen);
-
 
     }
 
